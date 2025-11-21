@@ -8,6 +8,7 @@ import java.util.Map;
  * This class generates a statement for a given invoice of performances.
  */
 public class StatementPrinter {
+
     private final Invoice invoice;
     private final Map<String, Play> plays;
 
@@ -15,6 +16,7 @@ public class StatementPrinter {
         this.invoice = invoice;
         this.plays = plays;
     }
+
 
     /**
      * Returns a formatted statement of the invoice associated with this printer.
@@ -27,8 +29,6 @@ public class StatementPrinter {
         final StringBuilder result =
                 new StringBuilder("Statement for " + invoice.getCustomer() + System.lineSeparator());
 
-        final NumberFormat frmt = NumberFormat.getCurrencyInstance(Locale.US);
-
         for (Performance p : invoice.getPerformances()) {
 
             int thisAmount = amountFor(p);
@@ -37,13 +37,18 @@ public class StatementPrinter {
             volumeCredits += volumeCreditsFor(p);
 
             // print line for this order
-            result.append(String.format("  %s: %s (%s seats)%n", playFor(p).getName(),
-                    frmt.format(thisAmount / Constants.PERCENT_FACTOR), p.getAudience()));
+            result.append(String.format("  %s: %s (%s seats)\n",
+                    playFor(p).getName(), usd(amountFor(p)), p.getAudience()));
             totalAmount += thisAmount;
         }
-        result.append(String.format("Amount owed is %s%n", frmt.format(totalAmount / Constants.PERCENT_FACTOR)));
+        result.append(String.format("Amount owed is %s\n", usd(totalAmount)));
         result.append(String.format("You earned %s credits%n", volumeCredits));
         return result.toString();
+    }
+
+    private String usd(int amount) {
+        return NumberFormat.getCurrencyInstance(Locale.US)
+                .format(amount / Constants.PERCENT_FACTOR);
     }
 
     private int volumeCreditsFor(Performance performance) {
