@@ -8,3 +8,8 @@ Task 2.1 done
 -introduced playFor
 -removed play parameter
 
+Task 2.2:
+- Extracted the volume credits calculation into volumeCreditsFor(Performance).
+- Cleaned up method signature to use a local result variable.
+- Replaced original volume credits code in statement() with call to volumeCreditsFor.
+- Verified tests passed after refactoring.
