@@ -18,3 +18,9 @@ Task 2.3:
 Removed frmt variable by creating usd() helper method for currency formatting.
  Fixed private field access by using getter methods instead of direct field access.
  All tests pass.
+
+ task 2.4:
+ done
+ plit single loop into three separate loops for volume credits, total amount and result building.
+ Created getTotalVolumeCredits() and getTotalAmount() methods.
+ All tests pass.
