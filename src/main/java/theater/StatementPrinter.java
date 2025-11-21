@@ -23,14 +23,15 @@ public class StatementPrinter {
      * @throws RuntimeException if one of the play types is not known
      */
     public String statement() {
-        final StringBuilder result = new StringBuilder("Statement for " + invoice.getCustomer() + System.lineSeparator());
+        final StringBuilder result =
+                new StringBuilder("Statement for " + invoice.getCustomer() + System.lineSeparator());
 
-        int volumeCredits = getTotalVolumeCredits();
-        int totalAmount = getTotalAmount();
+        final int volumeCredits = getTotalVolumeCredits();
+        final int totalAmount = getTotalAmount();
 
-        for (Performance p : invoice.getPerformances()) {
+        for (Performance performance : invoice.getPerformances()) {
             result.append(String.format("  %s: %s (%s seats)\n",
-                    getPlay(p).getName(), usd(getAmount(p)), p.getAudience()));
+                    getPlay(performance).getName(), usd(getAmount(performance)), performance.getAudience()));
         }
         result.append(String.format("Amount owed is %s\n", usd(totalAmount)));
         result.append(String.format("You earned %s credits%n", volumeCredits));
