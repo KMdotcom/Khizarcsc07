@@ -2,3 +2,9 @@ Task 1.1 done:
 - Set up CheckStyle
 - Fixed visibility, magic numbers, final keywords, braces
 - Ran tests to confirm functionality, works
+
+Task 2.1 done
+– extracted amountFor
+-introduced playFor
+-removed play parameter
+
