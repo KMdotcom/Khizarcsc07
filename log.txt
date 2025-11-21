@@ -13,3 +13,8 @@ Task 2.2:
 - Cleaned up method signature to use a local result variable.
 - Replaced original volume credits code in statement() with call to volumeCreditsFor.
 - Verified tests passed after refactoring.
+
+Task 2.3:
+Removed frmt variable by creating usd() helper method for currency formatting.
+ Fixed private field access by using getter methods instead of direct field access.
+ All tests pass.
