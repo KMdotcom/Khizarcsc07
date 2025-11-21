@@ -1,26 +1,17 @@
-Task 1.1 done:
-- Set up CheckStyle
-- Fixed visibility, magic numbers, final keywords, braces
-- Ran tests to confirm functionality, works
-
-Task 2.1 done
-– extracted amountFor
--introduced playFor
--removed play parameter
-
-Task 2.2:
-- Extracted the volume credits calculation into volumeCreditsFor(Performance).
-- Cleaned up method signature to use a local result variable.
-- Replaced original volume credits code in statement() with call to volumeCreditsFor.
-- Verified tests passed after refactoring.
-
-Task 2.3:
-Removed frmt variable by creating usd() helper method for currency formatting.
- Fixed private field access by using getter methods instead of direct field access.
- All tests pass.
-
- task 2.4:
- done
- plit single loop into three separate loops for volume credits, total amount and result building.
- Created getTotalVolumeCredits() and getTotalAmount() methods.
- All tests pass.
+82d0ab1 final
+90f9c05 final changes
+860f5f6 Fix method names for test compatibility
+c632fa3 Complete all refactoring tasks
+a52b8f3 log updated for 2.4
+b7bfe0e task 2.4 done
+5aa1969 Task 2.3 – updated log.txt
+ac29bf4 Task 2.3 done
+2fc5edf Task 2.2 – updated log
+4fbbb77 Task 2.2
+38131fe Task 2.1
+1a77f66 Task 2.1
+eea1e9e Task 2.1 done
+092ffaf Task 1.2 - updated log with Task 1.1 notes
+40b4bbe performance.java
+bdc2e7c Constants.java
+ec1a331 Initial commit
