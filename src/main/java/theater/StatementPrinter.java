@@ -17,33 +17,40 @@ public class StatementPrinter {
         this.plays = plays;
     }
 
-
     /**
      * Returns a formatted statement of the invoice associated with this printer.
      * @return the formatted statement
      * @throws RuntimeException if one of the play types is not known
      */
     public String statement() {
-        int totalAmount = 0;
-        int volumeCredits = 0;
-        final StringBuilder result =
-                new StringBuilder("Statement for " + invoice.getCustomer() + System.lineSeparator());
+        final StringBuilder result = new StringBuilder("Statement for " + invoice.getCustomer() + System.lineSeparator());
+
+        int volumeCredits = getTotalVolumeCredits();
+        int totalAmount = getTotalAmount();
 
         for (Performance p : invoice.getPerformances()) {
-
-            int thisAmount = amountFor(p);
-
-            // add volume credits
-            volumeCredits += volumeCreditsFor(p);
-
-            // print line for this order
             result.append(String.format("  %s: %s (%s seats)\n",
                     playFor(p).getName(), usd(amountFor(p)), p.getAudience()));
-            totalAmount += thisAmount;
         }
         result.append(String.format("Amount owed is %s\n", usd(totalAmount)));
         result.append(String.format("You earned %s credits%n", volumeCredits));
         return result.toString();
+    }
+
+    private int getTotalVolumeCredits() {
+        int result = 0;
+        for (Performance p : invoice.getPerformances()) {
+            result += volumeCreditsFor(p);
+        }
+        return result;
+    }
+
+    private int getTotalAmount() {
+        int result = 0;
+        for (Performance p : invoice.getPerformances()) {
+            result += amountFor(p);
+        }
+        return result;
     }
 
     private String usd(int amount) {
@@ -63,7 +70,6 @@ public class StatementPrinter {
 
         return result;
     }
-
 
     private Play playFor(Performance p) {
         return plays.get(p.getPlayID());
