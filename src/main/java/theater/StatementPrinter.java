@@ -40,16 +40,16 @@ public class StatementPrinter {
 
     private int getTotalVolumeCredits() {
         int result = 0;
-        for (Performance p : invoice.getPerformances()) {
-            result += getVolumeCredits(p);
+        for (Performance performance : invoice.getPerformances()) {
+            result += getVolumeCredits(performance);
         }
         return result;
     }
 
     private int getTotalAmount() {
         int result = 0;
-        for (Performance p : invoice.getPerformances()) {
-            result += getAmount(p);
+        for (Performance performance : invoice.getPerformances()) {
+            result += getAmount(performance);
         }
         return result;
     }
