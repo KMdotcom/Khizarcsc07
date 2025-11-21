@@ -72,8 +72,8 @@ public class StatementPrinter {
         return result;
     }
 
-    private Play getPlay(Performance p) {
-        return plays.get(p.getPlayID());
+    private Play getPlay(Performance performance) {
+        return plays.get(performance.getPlayID());
     }
 
     private int getAmount(Performance performance) {
